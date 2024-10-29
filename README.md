@@ -1,49 +1,59 @@
-# junior-devops-assignment
+# Junior DevOps Assignment
 
-This repo is made for assessing candidates for a Junior DevOps position at UNIwise.
-If you are applying for this role we want you to complete the assignment described below.
+This repository contains the technical assessment for Junior DevOps candidates at UNIwise.
 
-We want to you to shine at the code-interview and for that reason the assignment is quite open-ended, however please focus on completing the requirements that are present.
+## Introduction
 
-We value quality over quantity, which to us means that you think about delivering working code before moving to other parts of the assignment and that the files you write are written readable and structured consistently.
+If you're applying for this position, please complete the assignment detailed below. While the assignment is intentionally open-ended to allow you to demonstrate your skills, please ensure you meet all specified requirements.
+
+At UNIwise, we value quality over quantity. This means we prioritize working, well-structured code over partially completed features. Your code should be readable and follow consistent formatting conventions.
 
 ## Assignment
 
-### Part 1: required
+### Part 1: Required Tasks
 
-This project contains a project that should be used with docker-compose, however it seems that there exists a few issues with starting it up!
-You are tasked with:
+This project includes a Docker Compose setup, but there are several issues preventing it from running properly. Your tasks are:
 
-1. Getting the project running containerized
-    - you can test your solution with curl or a browser by visiting `http://localhost:<post>`
-    - it should look like the website home: ![website home](./images/website_home.png)
-    - you can use docker or podman to build such a container image with `docker/podman build -t <image-name> .`
-2. Getting the project running with all dependencies in docker-compose
-    - it should be able to start up with `docker compose` or `podman-compose`
-    - once it is working you should be able to create new chats using user `admin` on the frontpage and see them in the chat list, like this: ![website chat](./images/website_chat.png)
+1. Get the project running in containers:
+   - Test your solution by accessing `http://localhost:<port>` via curl or a browser
+   - The page should match the reference image: ![website home](./images/website_home.png)
+   - You can build the container image using either Docker or Podman: `docker/podman build -t <image-name> .`
+2. Configure and run the project with all dependencies using Docker Compose:
+   - The application should start using either `docker compose` or `podman-compose`
+   - When working correctly, you should be able to:
+     - Access the application at `localhost:8080`
+     - Create new chats using the `admin` user on the front page
+     - View chats in the chat list, as shown here: ![website chat](./images/website_chat.png)
 
-### Part 2: optional
+### Part 2: Optional Tasks
 
-The following are optional tasks that you can choose to complete if you have time left:
+If time permits, consider completing any of these additional tasks:
 
-- Create CI
-    - choose any CI tool that you like, just either make images in your `handin.md` or provide access to us such that we can see for ourselves.
-    - running `go build` is always a good start to make sure things are still building, adding tests would also make sense.
-    - push the image to a registry
-- Create unittests
-- Consider how you could change the Dockerfile such that you can keep it minimal.
-- Consider how you can introduce shifting left using linters or other tools.
+- Implement CI:
+   - Choose your preferred CI tool
+   - Document your implementation with screenshots in `handin.md` or provide access to the CI platform
+   - Consider including:
+     - Basic `go build` verification
+     - Unit tests
+     - Image pushing to a registry
+- Add unit tests
+- Optimize the Dockerfile for minimal size
+- Implement "shift-left" practices using linters or similar tools
+- Create Kubernetes deployment files using:
+   - Kustomize
+   - Raw Kubernetes YAML
+   - Helm chart
+   - (You can use Minikube, Kind, or MicroK8s for local testing)
 
-### Handin
+## Submission Guidelines
 
-To hand in the assignment you should fork this repository and create a file `handin.md` in the root of the repository that contains:
+To submit your assignment:
 
-1. Instructions of how to run the project
-2. \[if any\] A section on what is missing/had issues solving
-    - it is fine that required sections are missing, but please explain why and what you have tried to do.
-3. \[if any\] Considerations on the assignment
-
-You must add the people who your contact at UNIwise asks you to this project with a access level that allows the reviewers to see the things you have done.
-This means that if you for example create CI on another platform you should also add us there.
+1. Fork this repository
+2. Create a `handin.md` file in the root directory containing:
+   - Setup and running instructions
+   - Documentation of any unresolved issues or challenges
+   - Your thoughts and considerations about the assignment
+3. Grant repository access to the UNIwise reviewers as specified by your contact person. If you've used external platforms (e.g., CI services), please ensure reviewers have access to those as well.
 
 Good luck and happy coding!
