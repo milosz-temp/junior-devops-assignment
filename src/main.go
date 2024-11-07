@@ -166,11 +166,16 @@ func main() {
 
 	broadcaster = rdb.Subscribe(PubSubTopic)
 
+	// changed, so the linter doesn't fail.
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(index))
+		if _, err := w.Write([]byte(index)); err != nil {
+			http.Error(w, "Failed to write response", http.StatusInternalServerError)
+		}
 	})
 	http.HandleFunc("/app.js", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(appjs))
+		if _, err := w.Write([]byte(appjs)); err != nil {
+			http.Error(w, "Failed to write response", http.StatusInternalServerError)
+		}
 	})
 	http.HandleFunc("/websocket", handleConnections)
 	go handleMessages()
