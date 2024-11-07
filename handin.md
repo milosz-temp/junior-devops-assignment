@@ -97,3 +97,12 @@ http.HandleFunc("/app.js", func(w http.ResponseWriter, r *http.Request) {
 ```
 
 Since I'm not experienced with Go, I used GPT-4o to patch this.
+
+## 4. Create Kubernetes deployment files |❓|
+
+While created the deployment files with the help of:
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+- https://kubernetes.io/docs/concepts/services-networking/service/
+
+Testing with Minikube revealed some issues with binding to the correct container, so I connected only to my pushed image. Given more time, I would investigate this further.
+

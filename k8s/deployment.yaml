@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chatapp
+  template:
+    metadata:
+      labels:
+        app: chatapp
+    spec:
+      containers:
+        - name: junior-devops-assignment
+          image: milosztemp/chatapp:latest
+          ports:
+            - containerPort: 80
