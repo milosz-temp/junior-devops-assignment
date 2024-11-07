@@ -55,3 +55,13 @@ The redis service was added using the `redis:latest` image because the applicati
 Now, running the command `docker compose up` yielded a working solution.
 
 ![](images/sol_chat.png)
+
+
+# Part 2: Optional Tasks
+
+## 1. Implement CI
+To implement CI, Github Actions are used, and the implementation is present in `.github/workflows/go-ci.yml`. The `build-test` job pulls the code, sets up Go, grabs dependencies, builds the app, and runs the tests to make sure everything’s working. If it is, the `push_image` job logs into Docker Hub using repo's secrets, builds a Docker image, tags it as latest and with the commit SHA, then pushes it up to Docker Hub. 
+
+For local GitHub Actions testing, `act` was used (https://github.com/nektos/act). Testing was as simple as calling `sudo ./bin/act push --secret-file my.secrets`.
+
+Moreover, since no sensitive information is stored in `.env`, I decided to remove it from `.gitignore`. It helped me push the image to the registry using Github Actions. Any local secrets are stored in `my.secrets` instead.
