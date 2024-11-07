@@ -64,4 +64,6 @@ To implement CI, Github Actions are used, and the implementation is present in `
 
 For local GitHub Actions testing, `act` was used (https://github.com/nektos/act). Testing was as simple as calling `sudo ./bin/act push --secret-file my.secrets`.
 
-Moreover, since no sensitive information is stored in `.env`, I decided to remove it from `.gitignore`. It helped me push the image to the registry using Github Actions. Any local secrets are stored in `my.secrets` instead.
+Moreover, since no sensitive information is stored in `.env`, I decided to remove it from `.gitignore`. It helped me push the image to the registry using Github Actions. Any local secrets are stored in `my.secrets` instead. However, if `.env` grows to include sensitive data, other approach should be taken.
+
+The Github actions succeeds after push, but a warning is generated regarding failing cache restoration. It is solved by adding `cache-dependency-path` property under `Go set up` step.
